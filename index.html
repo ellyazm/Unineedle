@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniNeedle — UniNeedle Revolutionizes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F1EB;
+      --ink: #1A1A2E;
+      --teal: #0D7377;
+      --teal-light: #14A8AD;
+      --teal-muted: #E8F5F5;
+      --coral: #E8734A;
+      --mid: #5A6472;
+      --border: rgba(26,26,46,0.1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245,241,235,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--mid); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: #fff;
+      padding: 0.55rem 1.4rem; border-radius: 100px;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 4rem 4rem;
+      gap: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -20%; right: -10%;
+      width: 70vw; height: 70vw; max-width: 800px; max-height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, rgba(13,115,119,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--teal-muted); color: var(--teal);
+      border: 1px solid rgba(13,115,119,0.2);
+      padding: 0.35rem 1rem; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-label::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--teal); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--mid); line-height: 1.7;
+      max-width: 480px; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--ink); color: #fff;
+      padding: 0.85rem 2rem; border-radius: 100px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); }
+    .btn-ghost {
+      border: 1.5px solid var(--ink); color: var(--ink);
+      padding: 0.85rem 2rem; border-radius: 100px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+    /* Hero device visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .device-ring {
+      width: 420px; height: 420px; border-radius: 50%;
+      border: 1.5px solid rgba(13,115,119,0.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; animation: spin-slow 30s linear infinite;
+    }
+    .device-ring::before {
+      content: ''; position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px dashed rgba(13,115,119,0.15);
+    }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .device-core {
+      width: 240px; height: 240px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      box-shadow: 0 30px 80px rgba(13,115,119,0.35);
+      animation: spin-slow 30s linear infinite reverse;
+      position: relative;
+    }
+    .device-core::after {
+      content: '';
+      position: absolute; inset: 12px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .device-core svg { width: 60px; height: 60px; color: #fff; margin-bottom: 0.5rem; }
+    .device-core .reading {
+      font-family: var(--serif); font-size: 2.2rem; color: #fff; line-height: 1;
+    }
+    .device-core .unit { font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+    .orbit-dot {
+      position: absolute; width: 44px; height: 44px; border-radius: 50%;
+      background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .orbit-dot:nth-child(2) { top: 5%; left: 50%; transform: translateX(-50%); }
+    .orbit-dot:nth-child(3) { right: 5%; top: 50%; transform: translateY(-50%); }
+    .orbit-dot:nth-child(4) { bottom: 5%; left: 50%; transform: translateX(-50%); }
+    .orbit-dot:nth-child(5) { left: 5%; top: 50%; transform: translateY(-50%); }
+    .floating-card {
+      position: absolute; background: white;
+      border-radius: 16px; padding: 1rem 1.25rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      font-size: 0.8rem; font-weight: 600; color: var(--ink);
+      white-space: nowrap;
+    }
+    .floating-card.top { top: 8%; right: -5%; }
+    .floating-card.bottom { bottom: 10%; left: -8%; }
+    .floating-card .tag { font-size: 0.68rem; color: var(--teal); font-weight: 500; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--ink); color: #fff;
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--serif); font-size: 2.6rem; color: var(--teal-light);
+      line-height: 1; margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 400; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 4rem; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .section-body { font-size: 1.05rem; color: var(--mid); line-height: 1.75; max-width: 560px; }
+
+    /* ── MISSION ── */
+    .mission {
+      background: white;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .mission-text {}
+    .mission-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .m-card {
+      background: var(--cream); border-radius: 20px; padding: 1.75rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .m-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .m-card .icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--teal-muted); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1rem;
+    }
+    .m-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .m-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
+    /* ── TECHNOLOGY ── */
+    .technology { background: var(--cream); }
+    .tech-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .tech-steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 1rem; }
+    .step {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.5rem; border-radius: 16px;
+      border: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+    .step:hover { background: white; border-color: var(--border); }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--teal-muted); color: var(--teal);
+      font-weight: 700; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .step p { font-size: 0.875rem; color: var(--mid); line-height: 1.65; }
+
+    /* Tech diagram */
+    .tech-diagram {
+      background: var(--ink); border-radius: 28px; padding: 2.5rem;
+      color: #fff; position: sticky; top: 100px;
+    }
+    .diagram-title { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 1.5rem; }
+    .glucose-chart { width: 100%; height: 180px; }
+    .chart-labels {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; color: rgba(255,255,255,0.4);
+      margin-top: 0.5rem; margin-bottom: 1.5rem;
+    }
+    .loop-items { display: flex; flex-direction: column; gap: 1rem; }
+    .loop-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1rem; border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+    }
+    .loop-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .loop-item p { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+    .loop-item strong { font-size: 0.9rem; color: #fff; display: block; margin-bottom: 0.1rem; }
+
+    /* ── PRODUCTS ── */
+    .products { background: white; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .product-card {
+      border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .product-visual {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .product-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.06));
+    }
+    .product-body { padding: 1.75rem; }
+    .product-tag {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--teal); margin-bottom: 0.5rem;
+    }
+    .product-body h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .product-body p { font-size: 0.85rem; color: var(--mid); line-height: 1.65; margin-bottom: 1.25rem; }
+    .product-link {
+      font-size: 0.85rem; font-weight: 600; color: var(--teal);
+      text-decoration: none; display: flex; align-items: center; gap: 0.35rem;
+      transition: gap 0.2s;
+    }
+    .product-link:hover { gap: 0.6rem; }
+
+    /* ── PUBLICATIONS ── */
+    .publications { background: var(--cream); }
+    .pub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .pub-card {
+      background: white; border-radius: 20px; padding: 1.75rem;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pub-card:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(0,0,0,0.07); }
+    .pub-meta { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.75rem; }
+    .pub-title { font-size: 1rem; font-weight: 600; line-height: 1.5; margin-bottom: 0.6rem; }
+    .pub-authors { font-size: 0.8rem; color: var(--mid); line-height: 1.5; flex: 1; }
+    .pub-journal {
+      margin-top: 1rem; font-size: 0.75rem; font-weight: 600;
+      color: var(--teal); display: flex; align-items: center; gap: 0.3rem;
+    }
+
+    /* ── TEAM ── */
+    .team { background: white; }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .team-card {
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .team-card:hover { transform: translateY(-4px); }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 2rem; color: #fff;
+      position: relative;
+    }
+    .avatar::after {
+      content: ''; position: absolute; inset: -3px; border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; mask-composite: exclude;
+      transition: opacity 0.2s;
+    }
+    .team-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .team-card .role { font-size: 0.8rem; color: var(--teal); font-weight: 500; margin-bottom: 0.5rem; }
+    .team-card .bio { font-size: 0.78rem; color: var(--mid); line-height: 1.6; }
+
+    /* ── INVESTORS / PARTNERS ── */
+    .partners { background: var(--ink); padding: 4rem; }
+    .partners h2 {
+      font-family: var(--serif); font-size: 1.5rem; color: white;
+      text-align: center; margin-bottom: 2.5rem;
+      opacity: 0.6;
+    }
+    .partners-logos {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 2rem 4rem; align-items: center;
+    }
+    .partner-badge {
+      font-family: var(--serif); font-size: 1.2rem; color: rgba(255,255,255,0.35);
+      font-style: italic; letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .partner-badge:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── CONTACT / CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--teal) 0%, #0A5C60 100%);
+      padding: 6rem 4rem;
+      text-align: center; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; top: -50%; left: -20%;
+      width: 80vw; height: 80vw; max-width: 700px; max-height: 700px;
+      border-radius: 50%; background: rgba(255,255,255,0.05);
+    }
+    .cta-section::after {
+      content: ''; position: absolute; bottom: -40%; right: -10%;
+      width: 60vw; height: 60vw; max-width: 600px; max-height: 600px;
+      border-radius: 50%; background: rgba(255,255,255,0.04);
+    }
+    .cta-section h2 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1.25rem; position: relative; z-index: 1;
+    }
+    .cta-section p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75);
+      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-white {
+      background: white; color: var(--teal);
+      padding: 0.85rem 2.2rem; border-radius: 100px;
+      font-size: 0.95rem; font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.5); color: #fff;
+      padding: 0.85rem 2.2rem; border-radius: 100px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline-white:hover { border-color: white; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.5);
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand .logo {
+      font-family: var(--serif); font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem;
+    }
+    .footer-brand .logo span { color: var(--teal-light); }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { color: white; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.82rem; margin-bottom: 0.5rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.25rem 4rem;
+      display: flex; justify-content: space-between;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.25rem 2rem; }
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 7rem 2rem 4rem; }
+      .hero-sub { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 3rem 2rem; }
+      section { padding: 4rem 2rem; }
+      .mission, .tech-inner { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { grid-template-columns: 1fr 1fr; padding: 3rem 2rem; }
+      .footer-bottom { padding: 1.25rem 2rem; flex-direction: column; gap: 0.5rem; }
+    }
+    @media (max-width: 640px) {
+      nav .nav-links { display: none; }
+      .products-grid, .pub-grid, .team-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+    }
+
+    /* ── SURVEY ── */
+    .survey-section {
+      background: white; padding: 6rem 4rem;
+    }
+    .survey-intro { max-width: 640px; margin-bottom: 3rem; }
+    .survey-form {
+      max-width: 780px;
+      display: flex; flex-direction: column; gap: 2.5rem;
+    }
+    .survey-card {
+      background: var(--cream); border-radius: 20px;
+      padding: 2rem 2.25rem; border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .survey-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+    .survey-card.identity { background: linear-gradient(135deg, var(--teal-muted), #fff); }
+    .q-label {
+      font-size: 1rem; font-weight: 600; color: var(--ink);
+      margin-bottom: 0.25rem; line-height: 1.5;
+    }
+    .q-hint {
+      font-size: 0.8rem; color: var(--mid); margin-bottom: 1.25rem;
+    }
+    .options-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;
+    }
+    .options-grid.single-col { grid-template-columns: 1fr; }
+    .opt-label {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.65rem 1rem; border-radius: 10px;
+      border: 1.5px solid var(--border); background: white;
+      font-size: 0.875rem; color: var(--ink); cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .opt-label:hover { border-color: var(--teal); background: var(--teal-muted); }
+    .opt-label input[type="radio"],
+    .opt-label input[type="checkbox"] {
+      accent-color: var(--teal); width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .opt-label input[type="radio"]:checked ~ span,
+    .opt-label input[type="checkbox"]:checked ~ span { color: var(--teal); font-weight: 600; }
+    .opt-label:has(input:checked) { border-color: var(--teal); background: var(--teal-muted); }
+    .survey-input, .survey-textarea {
+      width: 100%; padding: 0.75rem 1rem; border-radius: 10px;
+      border: 1.5px solid var(--border); font-family: var(--sans);
+      font-size: 0.9rem; color: var(--ink); background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .survey-input:focus, .survey-textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,115,119,0.1);
+    }
+    .survey-textarea { resize: vertical; min-height: 110px; }
+    .other-input {
+      margin-top: 0.5rem; width: 100%;
+      padding: 0.5rem 0.85rem; border-radius: 8px;
+      border: 1.5px solid var(--border); font-family: var(--sans);
+      font-size: 0.85rem; background: white; outline: none;
+      transition: border-color 0.2s;
+    }
+    .other-input:focus { border-color: var(--teal); }
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .input-group label { font-size: 0.82rem; font-weight: 600; color: var(--mid); }
+    .section-divider {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--teal); margin-top: 1rem;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: rgba(13,115,119,0.2);
+    }
+    .likert-row {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .likert-btn {
+      flex: 1; min-width: 100px;
+      display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+      padding: 0.75rem 0.5rem; border-radius: 10px;
+      border: 1.5px solid var(--border); background: white; cursor: pointer;
+      font-family: var(--sans); font-size: 0.75rem; color: var(--mid);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .likert-btn:hover { border-color: var(--teal); background: var(--teal-muted); }
+    .likert-btn input { display: none; }
+    .likert-btn:has(input:checked) {
+      border-color: var(--teal); background: var(--teal);
+      color: white;
+    }
+    .likert-btn .emoji { font-size: 1.4rem; }
+    .survey-submit {
+      background: var(--teal); color: white;
+      padding: 1rem 2.5rem; border: none; border-radius: 100px;
+      font-family: var(--sans); font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      align-self: flex-start;
+    }
+    .survey-submit:hover { background: var(--teal-light); transform: translateY(-2px); }
+    .survey-success {
+      display: none; text-align: center; padding: 3rem 2rem;
+      background: var(--teal-muted); border-radius: 20px;
+      border: 1px solid rgba(13,115,119,0.2);
+    }
+    .survey-success .check { font-size: 3rem; margin-bottom: 1rem; }
+    .survey-success h3 { font-family: var(--serif); font-size: 1.8rem; color: var(--ink); margin-bottom: 0.75rem; }
+    .survey-success p { color: var(--mid); font-size: 1rem; }
+    @media (max-width: 640px) {
+      .survey-section { padding: 4rem 1.5rem; }
+      .options-grid { grid-template-columns: 1fr; }
+      .input-row { grid-template-columns: 1fr; }
+      .likert-row { flex-direction: column; }
+      .likert-btn { flex-direction: row; min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://ellyazm.github.io/Unineedle/#" class="nav-logo">Uni<span>Needle</span></a>
+    <ul class="nav-links">
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#publications">Research</a></li>
+      <li><a href="#survey">Survey</a></li>
+    </ul>
+    <a href="#survey" class="nav-cta">Take the Survey</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-label">UniNeedle Revolutionizes</div>
+      <h1>Less pain,<br /><em>More accuracy.</em></h1>
+      <p class="hero-sub">UniNeedle's biosensor continuously reads interstitial glucose and talks directly to your insulin pump, no fingersticks, no manual corrections, no guesswork.</p>
+      <div class="hero-actions">
+        <a href="#technology" class="btn-primary">See the Technology</a>
+        <a href="#contact" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div style="position:relative">
+        <div class="device-ring">
+          <div class="orbit-dot">💧</div>
+          <div class="orbit-dot">📡</div>
+          <div class="orbit-dot">⚡</div>
+          <div class="orbit-dot">🔒</div>
+          <div class="device-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <div class="reading">94</div>
+            <div class="unit">mg/dL · Live</div>
+          </div>
+        </div>
+        <div class="floating-card top">
+          <div class="tag">Last bolus</div>
+          2.4 U · 18 min ago
+        </div>
+        <div class="floating-card bottom">
+          <div class="tag">Time-in-range today</div>
+          92% · ↑ 7%
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat fade-in">
+      <div class="stat-num">&lt;2 min</div>
+      <div class="stat-label">Sensor warm-up time</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">±5 mg/dL</div>
+      <div class="stat-label">Mean absolute error (MARD)</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">15 days</div>
+      <div class="stat-label">Continuous wear per sensor</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">92%</div>
+      <div class="stat-label">Average time-in-range in trials</div>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="mission" id="mission">
+    <div class="mission-text fade-in">
+      <span class="section-tag">Our Mission</span>
+      <h2 class="section-title">Automate the burden of diabetes management</h2>
+      <p class="section-body">People with Type 1 and insulin-dependent Type 2 diabetes make hundreds of glycemic decisions every day. UniNeedle closes the loop, so the system decides, and people live freely.</p>
+    </div>
+    <div class="mission-cards fade-in">
+      <div class="m-card">
+        <div class="icon">🩹</div>
+        <h3>Minimally Invasive</h3>
+        <p>Sub-dermal micro-filament sensor. Applied in seconds, worn comfortably for 15 days.</p>
+      </div>
+      <div class="m-card">
+        <div class="icon">🔄</div>
+        <h3>Closed-Loop</h3>
+        <p>Real-time bidirectional communication with any AID-compatible insulin pump.</p>
+      </div>
+      <div class="m-card">
+        <div class="icon">📱</div>
+        <h3>App-Connected</h3>
+        <p>iOS & Android companion app with trend arrows, alerts, and cloud-synced history.</p>
+      </div>
+      <div class="m-card">
+        <div class="icon">🧠</div>
+        <h3>Adaptive AI</h3>
+        <p>On-device algorithm learns your personal insulin-to-carb ratio and correction factors over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section class="technology" id="technology">
+    <div class="tech-inner">
+      <div>
+        <span class="section-tag">Technology</span>
+        <h2 class="section-title">How the UniNeedle works</h2>
+        <p class="section-body">Three integrated components form a seamless feedback cycle, sense, decide, deliver, refreshed every five minutes, around the clock.</p>
+        <div class="tech-steps">
+          <div class="step fade-in">
+            <div class="step-num">01</div>
+            <div>
+              <h3>Electrochemical Glucose Sensing</h3>
+              <p>Our biosensor binds glucose molecules in interstitial fluid and converts binding events into a real-time electrochemical signal, avoiding enzyme degradation common in first-gen CGMs.</p>
+            </div>
+          </div>
+          <div class="step fade-in">
+            <div class="step-num">02</div>
+            <div>
+              <h3> Edge Processing</h3>
+              <p>A low-power ASIC on the transmitter filters, calibrates, and runs our predictive glycemic algorithm locally — results stay on your body, not a distant server.</p>
+            </div>
+          </div>
+          <div class="step fade-in">
+            <div class="step-num">03</div>
+            <div>
+              <h3>Automated Insulin Delivery</h3>
+              <p> the device commands your AID pump in real time — micro-boluses for spikes, basal rate reductions for impending lows — continuously and automatically.</p>
+            </div>
+          </div>
+          <div class="step fade-in">
+            <div class="step-num">04</div>
+            <div>
+              <h3>Predictive Hypoglycemia Prevention</h3>
+              <p>Our onboard 30-minute lookahead model suspends insulin delivery before a low occurs, not just after — reducing severe hypoglycemic events by over 70% in clinical trials.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-diagram fade-in">
+        <div class="diagram-title">Live Glucose Trend</div>
+        <svg class="glucose-chart" viewBox="0 0 360 180" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#14A8AD" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#14A8AD" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Target range band -->
+          <rect x="0" y="50" width="360" height="80" fill="rgba(20,168,173,0.07)" rx="4"/>
+          <text x="8" y="47" fill="rgba(255,255,255,0.3)" font-size="10" font-family="DM Sans, sans-serif">180 mg/dL</text>
+          <text x="8" y="135" fill="rgba(255,255,255,0.3)" font-size="10" font-family="DM Sans, sans-serif">70 mg/dL</text>
+          <!-- Glucose curve -->
+          <path d="M0,120 C20,115 40,100 60,85 C80,70 100,55 120,58 C140,61 160,80 180,75 C200,70 220,55 240,52 C260,49 280,62 300,75 C320,88 340,90 360,88"
+                fill="url(#chartGrad)" stroke="#14A8AD" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Prediction dashes -->
+          <path d="M360,88 C370,86 380,82 390,78 C400,74 410,70 420,68"
+                fill="none" stroke="#14A8AD" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" opacity="0.5"/>
+          <!-- Current point -->
+          <circle cx="360" cy="88" r="5" fill="#14A8AD"/>
+          <circle cx="360" cy="88" r="9" fill="none" stroke="#14A8AD" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <div class="chart-labels">
+          <span>6 AM</span><span>9 AM</span><span>12 PM</span><span>3 PM</span><span>Now</span>
+        </div>
+        <div class="loop-items">
+          <div class="loop-item">
+            <div class="loop-dot" style="background:#14A8AD"></div>
+            <div>
+              <strong>Current: 94 mg/dL</strong>
+              <p>Trending flat · Target range ✓</p>
+            </div>
+          </div>
+          <div class="loop-item">
+            <div class="loop-dot" style="background:#E8734A"></div>
+            <div>
+              <strong>Last Action: 0.8 U micro-bolus</strong>
+              <p>Post-lunch correction · 22 min ago</p>
+            </div>
+          </div>
+          <div class="loop-item">
+            <div class="loop-dot" style="background:#A8D5B5"></div>
+            <div>
+              <strong>Next Prediction: 91 mg/dL in 30 min</strong>
+              <p>No intervention required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <!--
+  <section class="products" id="products">
+    <span class="section-tag">Products</span>
+    <h2 class="section-title">Built for every stage</h2>
+    <div class="products-grid">
+      <div class="product-card fade-in">
+        <div class="product-visual" style="background: linear-gradient(135deg, #E8F5F5, #C5E8EA);">🩹</div>
+        <div class="product-body">
+          <div class="product-tag">Sensor · Gen 2</div>
+          <h3>UniNeedle</h3>
+          <p>15-day aptamer biosensor. Slim, waterproof, and auto-calibrating. No fingersticks ever required.</p>
+          <a href="#" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-visual" style="background: linear-gradient(135deg, #FDF1EC, #F8DDD0);">📟</div>
+        <div class="product-body">
+          <div class="product-tag">Transmitter</div>
+          <h3>SmartLink Transmitter</h3>
+          <p>Rechargeable micro-transmitter with Bluetooth 5.3 and AID pump protocol. 90-day battery life.</p>
+          <a href="#" class="product-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-visual" style="background: linear-gradient(135deg, #EEF0FF, #D8DDFF);">📱</div>
+        <div class="product-body">
+          <div class="product-tag">Software · iOS & Android</div>
+          <h3>UniNeedle App</h3>
+          <p>Real-time readings, trend graphs, custom alerts, meal logging, and clinician-sharing portal in one app.</p>
+          <a href="#" class="product-link">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- PUBLICATIONS -->
+  <section class="publications" id="publications">
+    <span class="section-tag">Research & Publications</span>
+    <h2 class="section-title">Peer-reviewed science<br />behind every claim</h2>
+    <div class="pub-grid">
+      <div class="pub-card fade-in">
+        <div class="pub-meta">2026 · Biosensor Engineering</div>
+        <div class="pub-title">A Fully Flexible Conductive Hydrogel Composite Electrode Integrated with Gold Nanoparticles and a Dual Activation−Regeneration Sensing Strategy for Continuous In Vivo Glucose Monitoring</div>
+        <div class="pub-authors">P. GhavamiNejad, J. Wang, Z. Yang, S. Sadeghzadeh, B. Shokouhian, and M. Poudineh.</div>
+        <div class="pub-journal">📄 ACS Sensors</div>
+      </div>
+      <div class="pub-card fade-in">
+        <div class="pub-meta">2022 · Biosensor Engineering</div>
+        <div class="pub-title">A Conductive Hydrogel Microneedle-Based Assay for Real-time, Continuous, and Enzyme-less Glucose Measurement in Live Animals</div>
+        <div class="pub-authors">P. GhavamiNejad*, A. GhavamiNejad*, H. Zheng,K. Dhingra, M. Samarikhalaj, and M. Poudineh</div>
+        <div class="pub-journal">📄 Advanced Healthcare Materials</div>
+      </div>
+      <div class="pub-card fade-in">
+        <div class="pub-meta">2024 · Biosensor Engineering</div>
+        <div class="pub-title">Multifunctional Dopamine-Based Hydrogel Microneedle Electrode for Continuous Ketone Sensing</div>
+        <div class="pub-authors">I. Rahmi Ausri*, S. Sadeghzadeh*, S. Biswas, H. Zheng, P. GhavamiNejad, and M. Poudineh et al.  </div>
+        <div class="pub-journal">📄 Advanced Materials</div>
+      </div>
+      <div class="pub-card fade-in">
+        <div class="pub-meta">2024 · Biosensor Engineering</div>
+        <div class="pub-title">Integrated Electrochemical Aptamer Biosensing and Colorimetric pH Monitoring via Hydrogel Microneedle Assays for Assessing Antibiotic Treatment</div>
+        <div class="pub-authors">F. Keyvani*, P. GhavamiNejad*, M. Ayman Saleh* and M. Poudineh et al.</div>
+        <div class="pub-journal">📄 Advanced Science</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <!--
+  <section class="team" id="team">
+    <span class="section-tag">Our Team</span>
+    <h2 class="section-title">Scientists, engineers,<br />clinicians — united</h2>
+    <div class="team-grid">
+      <div class="team-card fade-in">
+        <div class="avatar" style="background: linear-gradient(135deg, #0D7377, #14A8AD);">AO</div>
+        <h3>Dr. Peyman Ghavaminejad</h3>
+        <div class="role">CEO & Co-founder</div>
+        <p class="bio">Biomedical and Nanotechnology engineer. postdocotal fellow University of Waterloo. 10 years Biomedical research.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="avatar" style="background: linear-gradient(135deg, #1A1A2E, #3A3A6E);">MS</div>
+        <h3>Kate</h3>
+        <div class="role">CTO & Co-founder</div>
+        <p class="bio">Biosensor scientist. PhD MIT, postdoc Harvard Wyss. Inventor of 4 aptamer sensing patents.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="avatar" style="background: linear-gradient(135deg, #E8734A, #C8532A);">RP</div>
+        <h3>Rohan Patel</h3>
+        <div class="role">VP Engineering</div>
+        <p class="bio">ML & embedded systems. Previously led AID algorithm team at Tandem Diabetes Care.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="avatar" style="background: linear-gradient(135deg, #4A7C59, #2E5C40);">KL</div>
+        <h3>Dr. Katrine Larsson</h3>
+        <div class="role">VP Clinical Affairs</div>
+        <p class="bio">Regulated medical device specialist. Led FDA 510(k) submissions for two Class II glucose devices.</p>
+      </div>
+    </div>
+  </section>
+
+  -->
+
+  <!-- SURVEY -->
+  <section class="survey-section" id="survey">
+    <div class="survey-intro fade-in">
+      <span class="section-tag">Patient Survey</span>
+      <h2 class="section-title">Help us build the future<br />of diabetes management</h2>
+      <p class="section-body">Your experience matters. This short survey helps us understand how people live with CGMs and insulin pumps today — and what UniNeedle needs to deliver tomorrow.</p>
+    </div>
+
+    <div class="survey-form" id="surveyForm">
+
+      <!-- Identity -->
+      <div class="survey-card identity fade-in">
+        <div class="q-label">Your Information</div>
+        <div class="q-hint">We'll only use this to follow up on your responses if needed.</div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="s-name">Full Name <span style="color:var(--coral)">*</span></label>
+            <input class="survey-input" type="text" id="s-name" name="name" placeholder="e.g. Jane Smith" required />
+          </div>
+          <div class="input-group">
+            <label for="s-email">Email Address <span style="color:var(--coral)">*</span></label>
+            <input class="survey-input" type="email" id="s-email" name="email" placeholder="jane@example.com" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: CGM -->
+      <div class="section-divider">Continuous Glucose Monitoring (CGM)</div>
+
+      <!-- Q1 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">1. Which Continuous Glucose Monitor (CGM) are you currently using?</div>
+        <div class="q-hint">Select one.</div>
+        <div class="options-grid">
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Dexcom G7" /><span>Dexcom G7</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Dexcom G6" /><span>Dexcom G6</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="FreeStyle Libre 3" /><span>FreeStyle Libre 3</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="FreeStyle Libre 2" /><span>FreeStyle Libre 2</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="FreeStyle Libre 2 Plus" /><span>FreeStyle Libre 2 Plus</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Medtronic Guardian 4" /><span>Medtronic Guardian 4</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Eversense E3" /><span>Eversense E3</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Blood glucose meter only" /><span>Blood glucose meter only (finger-prick)</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="I do not currently monitor" /><span>I do not currently monitor my glucose</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_device" value="Other CGM" /><span>Other</span></label>
+        </div>
+        <input class="other-input" type="text" placeholder="Please specify…" id="cgm_other" style="display:none" />
+      </div>
+
+      <!-- Q2 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">2. How long have you been using your current CGM?</div>
+        <div class="q-hint">Select one.</div>
+        <div class="options-grid single-col">
+          <label class="opt-label"><input type="radio" name="cgm_duration" value="Less than 6 months" /><span>Less than 6 months</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_duration" value="6-12 months" /><span>6–12 months</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_duration" value="1-3 years" /><span>1–3 years</span></label>
+          <label class="opt-label"><input type="radio" name="cgm_duration" value="More than 3 years" /><span>More than 3 years</span></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">3. What are your biggest frustrations with your current CGM?</div>
+        <div class="q-hint">Select all that apply.</div>
+        <div class="options-grid">
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Pain during insertion" /><span>Pain during insertion</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Skin irritation" /><span>Skin irritation</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Adhesive issues" /><span>Adhesive issues</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Frequent replacement" /><span>Frequent replacement</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Accuracy concerns" /><span>Accuracy concerns</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Calibration requirements" /><span>Calibration requirements</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Alarm fatigue" /><span>Alarm fatigue</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Cost" /><span>Cost</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Size/appearance" /><span>Size / appearance</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Limited wear duration" /><span>Limited wear duration</span></label>
+          <label class="opt-label"><input type="checkbox" name="cgm_frustrations" value="Other frustration" /><span>Other</span></label>
+        </div>
+        <input class="other-input" type="text" placeholder="Please specify…" id="cgm_frustration_other" style="display:none" />
+      </div>
+
+      <!-- Section: Pump -->
+      <div class="section-divider">Insulin Pump Usage</div>
+
+      <!-- Q4 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">4. Which insulin pump are you currently using?</div>
+        <div class="q-hint">Select one.</div>
+        <div class="options-grid">
+          <label class="opt-label"><input type="radio" name="pump_device" value="Omnipod 5" /><span>Omnipod 5</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="Omnipod DASH" /><span>Omnipod DASH</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="MiniMed 780G" /><span>MiniMed 780G</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="MiniMed 770G" /><span>MiniMed 770G</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="t:slim X2" /><span>t:slim X2</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="Mobi" /><span>Mobi</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="MDI" /><span>Multiple daily injections (MDI)</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="I do not use insulin" /><span>I do not use insulin</span></label>
+          <label class="opt-label"><input type="radio" name="pump_device" value="Other pump" /><span>Other</span></label>
+        </div>
+        <input class="other-input" type="text" placeholder="Please specify…" id="pump_other" style="display:none" />
+      </div>
+
+      <!-- Q5 Likert -->
+      <div class="survey-card fade-in">
+        <div class="q-label">5. How satisfied are you with your current insulin delivery method?</div>
+        <div class="q-hint">Select one.</div>
+        <div class="likert-row">
+          <label class="likert-btn"><input type="radio" name="pump_satisfaction" value="Very dissatisfied" /><span class="emoji">😞</span>Very dissatisfied</label>
+          <label class="likert-btn"><input type="radio" name="pump_satisfaction" value="Dissatisfied" /><span class="emoji">🙁</span>Dissatisfied</label>
+          <label class="likert-btn"><input type="radio" name="pump_satisfaction" value="Neutral" /><span class="emoji">😐</span>Neutral</label>
+          <label class="likert-btn"><input type="radio" name="pump_satisfaction" value="Satisfied" /><span class="emoji">🙂</span>Satisfied</label>
+          <label class="likert-btn"><input type="radio" name="pump_satisfaction" value="Very satisfied" /><span class="emoji">😄</span>Very satisfied</label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">6. What are your biggest challenges with your current insulin pump?</div>
+        <div class="q-hint">Select all that apply.</div>
+        <div class="options-grid">
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Wearing the device" /><span>Wearing the device</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Tubing issues" /><span>Tubing issues</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Site changes" /><span>Site changes</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Device size" /><span>Device size</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Cost" /><span>Cost</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Reliability" /><span>Reliability</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Skin irritation" /><span>Skin irritation</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Battery charging" /><span>Battery charging</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Connectivity issues" /><span>Connectivity issues</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Learning curve" /><span>Learning curve</span></label>
+          <label class="opt-label"><input type="checkbox" name="pump_challenges" value="Other pump challenge" /><span>Other</span></label>
+        </div>
+        <input class="other-input" type="text" placeholder="Please specify…" id="pump_challenge_other" style="display:none" />
+      </div>
+
+      <!-- Section: Future -->
+      <div class="section-divider">Future Device Preferences</div>
+
+      <!-- Q7 Likert -->
+      <div class="survey-card fade-in">
+        <div class="q-label">7. If a single microneedle patch could both monitor glucose <em>and</em> deliver insulin, how interested would you be?</div>
+        <div class="q-hint">Select one.</div>
+        <div class="likert-row">
+          <label class="likert-btn"><input type="radio" name="patch_interest" value="Not interested" /><span class="emoji">🚫</span>Not interested</label>
+          <label class="likert-btn"><input type="radio" name="patch_interest" value="Slightly interested" /><span class="emoji">🤔</span>Slightly interested</label>
+          <label class="likert-btn"><input type="radio" name="patch_interest" value="Moderately interested" /><span class="emoji">👍</span>Moderately interested</label>
+          <label class="likert-btn"><input type="radio" name="patch_interest" value="Very interested" /><span class="emoji">⭐</span>Very interested</label>
+          <label class="likert-btn"><input type="radio" name="patch_interest" value="Extremely interested" /><span class="emoji">🔥</span>Extremely interested</label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="survey-card fade-in">
+        <div class="q-label">8. Which features would motivate you to switch from your current device?</div>
+        <div class="q-hint">Select up to 3.</div>
+        <div class="options-grid" id="switch_features_grid">
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Smaller size" /><span>Smaller size</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Painless application" /><span>Painless application</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Longer wear time" /><span>Longer wear time</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Better accuracy" /><span>Better accuracy</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Lower cost" /><span>Lower cost</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Automatic insulin delivery" /><span>Automatic insulin delivery</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Fewer alarms" /><span>Fewer alarms</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Better smartphone integration" /><span>Better smartphone integration</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Less maintenance" /><span>Less maintenance</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="More comfortable on skin" /><span>More comfortable on skin</span></label>
+          <label class="opt-label"><input type="checkbox" name="switch_features" value="Other switch feature" /><span>Other</span></label>
+        </div>
+        <input class="other-input" type="text" placeholder="Please specify…" id="switch_other" style="display:none" />
+        <p id="switch_limit_msg" style="font-size:0.78rem;color:var(--coral);margin-top:0.5rem;display:none;">Maximum 3 selections reached.</p>
+      </div>
+
+      <!-- Q9 Open -->
+      <div class="survey-card fade-in">
+        <div class="q-label">9. What is the most important improvement you would like to see in diabetes management devices?</div>
+        <div class="q-hint">Please share your thoughts in your own words.</div>
+        <textarea class="survey-textarea" name="open_response" placeholder="Share your thoughts here…"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="button" class="survey-submit" onclick="submitSurvey()">Submit Survey →</button>
+
+      <!-- Success message -->
+      <div class="survey-success" id="surveySuccess">
+        <div class="check">✅</div>
+        <h3>Thank you for your response!</h3>
+        <p>Your insights will directly shape the future of UniNeedle. We'll be in touch if we have follow-up questions.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <div class="partners">
+    <h2>Backed by & Built With</h2>
+    <div class="partners-logos">
+      <span class="partner-badge">Cornerstone</span>
+      <span class="partner-badge">Velocity</span>
+      <span class="partner-badge">University of Waterloo</span>
+      <span class="partner-badge">IDEATION Lab</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <div class="logo"><a href="https://ellyazm.github.io/Unineedle/#" style="text-decoration:none;color:inherit;">Uni<span>Needle</span></a></div>
+      <p>Precision closed-loop glucose management. Making autonomous insulin delivery a reality for everyone who needs it.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Team</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="footer-col">
+      <h4>Science</h4>
+      <a href="#">Technology</a>
+      <a href="#">Publications</a>
+      <a href="#">Clinical Trials</a>
+      <a href="#">IP Portfolio</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">hello@UniNeedle.com</a>
+      <a href="#">Partnerships</a>
+      <a href="#">Investors</a>
+      <a href="#">Media Inquiries</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2026 UniNeedle Inc. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Use</span>
+  </div>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Shrink nav on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.25rem 4rem';
+    });
+
+    // Animate the live reading
+    const readingEl = document.querySelector('.device-core .reading');
+    let base = 94;
+    setInterval(() => {
+      base += (Math.random() - 0.5) * 2;
+      base = Math.max(82, Math.min(108, base));
+      if (readingEl) readingEl.textContent = Math.round(base);
+    }, 3000);
+
+    // ── SURVEY LOGIC ──
+
+    // Show "Other" text input when "Other" option is selected
+    function bindOtherReveal(radioOrCheckboxValue, inputId) {
+      document.addEventListener('change', function(e) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        if (e.target.value === radioOrCheckboxValue && (e.target.type === 'radio' || e.target.type === 'checkbox')) {
+          input.style.display = e.target.checked ? 'block' : 'none';
+        }
+        // For radio: hide if another option is chosen
+        if (e.target.type === 'radio' && e.target.name === document.querySelector(`input[value="${radioOrCheckboxValue}"]`)?.name) {
+          if (e.target.value !== radioOrCheckboxValue) input.style.display = 'none';
+        }
+      });
+    }
+    bindOtherReveal('Other CGM',            'cgm_other');
+    bindOtherReveal('Other frustration',    'cgm_frustration_other');
+    bindOtherReveal('Other pump',           'pump_other');
+    bindOtherReveal('Other pump challenge', 'pump_challenge_other');
+    bindOtherReveal('Other switch feature', 'switch_other');
+
+    // Checkbox "Other" reveal (needs change listener per checkbox)
+    ['cgm_frustrations','pump_challenges','switch_features'].forEach(name => {
+      document.addEventListener('change', function(e) {
+        if (e.target.name !== name) return;
+        const otherCb = document.querySelector(`input[name="${name}"][value^="Other"]`);
+        if (!otherCb) return;
+        const map = {
+          'cgm_frustrations': 'cgm_frustration_other',
+          'pump_challenges':  'pump_challenge_other',
+          'switch_features':  'switch_other'
+        };
+        const inp = document.getElementById(map[name]);
+        if (inp) inp.style.display = otherCb.checked ? 'block' : 'none';
+      });
+    });
+
+    // Enforce max-3 on "switch_features"
+    document.addEventListener('change', function(e) {
+      if (e.target.name !== 'switch_features') return;
+      const checked = document.querySelectorAll('input[name="switch_features"]:checked');
+      const msg = document.getElementById('switch_limit_msg');
+      if (checked.length > 3) {
+        e.target.checked = false;
+        msg.style.display = 'block';
+      } else {
+        msg.style.display = 'none';
+      }
+      // Grey out unchecked boxes when at limit
+      const all = document.querySelectorAll('input[name="switch_features"]');
+      const atLimit = document.querySelectorAll('input[name="switch_features"]:checked').length >= 3;
+      all.forEach(cb => {
+        const lbl = cb.closest('.opt-label');
+        if (lbl) lbl.style.opacity = (!cb.checked && atLimit) ? '0.45' : '1';
+      });
+    });
+
+    // Submit handler
+    function submitSurvey() {
+      const name  = document.getElementById('s-name').value.trim();
+      const email = document.getElementById('s-email').value.trim();
+
+      if (!name) {
+        document.getElementById('s-name').focus();
+        document.getElementById('s-name').style.borderColor = 'var(--coral)';
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('s-email').focus();
+        document.getElementById('s-email').style.borderColor = 'var(--coral)';
+        return;
+      }
+
+      // Collect all answers
+      const get = (name) => {
+        const els = document.querySelectorAll(`input[name="${name}"]:checked`);
+        const vals = Array.from(els).map(e => e.value);
+        // Append "other" text if applicable
+        const otherMap = {
+          'cgm_device':       'cgm_other',
+          'cgm_frustrations': 'cgm_frustration_other',
+          'pump_device':      'pump_other',
+          'pump_challenges':  'pump_challenge_other',
+          'switch_features':  'switch_other'
+        };
+        if (otherMap[name]) {
+          const otherInp = document.getElementById(otherMap[name]);
+          if (otherInp && otherInp.style.display !== 'none' && otherInp.value.trim()) {
+            const idx = vals.findIndex(v => v.startsWith('Other'));
+            if (idx !== -1) vals[idx] = 'Other: ' + otherInp.value.trim();
+          }
+        }
+        return vals.join('; ') || '—';
+      };
+
+      const data = {
+        name,
+        email,
+        cgm_device:       get('cgm_device'),
+        cgm_duration:     get('cgm_duration'),
+        cgm_frustrations: get('cgm_frustrations'),
+        pump_device:      get('pump_device'),
+        pump_satisfaction:get('pump_satisfaction'),
+        pump_challenges:  get('pump_challenges'),
+        patch_interest:   get('patch_interest'),
+        switch_features:  get('switch_features'),
+        open_response:    document.querySelector('textarea[name="open_response"]').value.trim() || '—'
+      };
+
+      console.log('Survey submission:', data);
+      // 👆 Replace with your backend/email endpoint, e.g.:
+      // fetch('/api/survey', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
+
+      // Show success
+      document.getElementById('surveyForm').querySelectorAll('.survey-card, .section-divider, button').forEach(el => {
+        el.style.display = 'none';
+      });
+      const success = document.getElementById('surveySuccess');
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+</body>
+</html>
