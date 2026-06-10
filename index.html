@@ -1247,9 +1247,36 @@
         open_response:    document.querySelector('textarea[name="open_response"]').value.trim() || '—'
       };
 
-      console.log('Survey submission:', data);
+      //console.log('Survey submission:', data);
       // 👆 Replace with your backend/email endpoint, e.g.:
       // fetch('/api/survey', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
+      // ── REPLACE the console.log line in submitSurvey() with this ──
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7SOqoai_QipsWNTBAAHrlOEmjW-18LYUl_BPpQe-e8HQALW-gb2SH3r38vb9CeY-m/exec';
+      const btn = document.querySelector('.survey-submit');
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+      fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',          // required for Apps Script
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+     })
+    .then(() => {
+  // Show success (fetch with no-cors always resolves even on error,
+  // so we optimistically show success — the Apps Script try/catch handles server errors)
+      document.getElementById('surveyForm').querySelectorAll('.survey-card, .section-divider, button').forEach(el => el.style.display = 'none');
+      const success = document.getElementById('surveySuccess');
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })      
+      .catch(() => {
+      btn.textContent = 'Submit Survey →';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+      });
+
+      
+    
 
       // Show success
       document.getElementById('surveyForm').querySelectorAll('.survey-card, .section-divider, button').forEach(el => {
